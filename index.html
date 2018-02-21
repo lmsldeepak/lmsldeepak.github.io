@@ -8,7 +8,7 @@
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
   window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = 'BQC2wQkAXWXsT4ZghUdFcaxQiOThsFhVeDPe55KDVmwOBMhloou-OUdIv0Rk7koX4NLJfTuXMUpCzGK0S8LtYZvPZuJgg46R7vcqkPufgsSN8rO2q8YAXIqlqT6r6VDZLn74SV2viOKhrL3LGo-roKtavxQlju9pe3ub';
+    const token = 'YOURTOKENHERE';
     const player = new Spotify.Player({
       name: 'Spotify Connect Experiment',
       getOAuthToken: cb => { cb(token); }

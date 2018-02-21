@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify Connect Audio Broadcast</title>
+</head>
+<body>
+  <h1>Spotify Connect Audio Receiver</h1>
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
+  window.onSpotifyWebPlaybackSDKReady = () => {
+    const token = 'BQC2wQkAXWXsT4ZghUdFcaxQiOThsFhVeDPe55KDVmwOBMhloou-OUdIv0Rk7koX4NLJfTuXMUpCzGK0S8LtYZvPZuJgg46R7vcqkPufgsSN8rO2q8YAXIqlqT6r6VDZLn74SV2viOKhrL3LGo-roKtavxQlju9pe3ub';
+    const player = new Spotify.Player({
+      name: 'Spotify Connect Experiment',
+      getOAuthToken: cb => { cb(token); }
+    });
+
+    // Error handling
+    player.on('initialization_error', e => { console.error(e); });
+    player.on('authentication_error', e => { console.error(e); });
+    player.on('account_error', e => { console.error(e); });
+    player.on('playback_error', e => { console.error(e); });
+
+    // Playback status updates
+    player.on('player_state_changed', state => { console.log(state); });
+
+    // Ready
+    player.on('ready', data => {
+      let { device_id } = data;
+      console.log('Ready with Device ID', device_id);
+    });
+
+    // Connect to the player!
+    player.connect();
+  }
+  </script>
+</body>
+</html>

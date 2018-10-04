@@ -7,10 +7,11 @@
   <h1>Spotify Connect Audio Receiver</h1>
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
+  var play = document.getElementById("playername").value;
   window.onSpotifyWebPlaybackSDKReady = () => {
     const token = 'BQBkkIvT0ovx4iziSXWpPi09iEqj-e5vKWQPS1HRYnMUT9w-l1lj0eUYu1ZhdOydcvBviqE2mmEKau18aEHP82oofLT1x-NZaKYGi7uBgz3wW0jKYv_XkucnCxJ32PKFeckUbX7bzESBaCFGn_Tj_Los3hvewv5YiqOibcw';
     const player = new Spotify.Player({
-      name: 'Spotify Connect Experiment',
+      name: play,
       getOAuthToken: cb => { cb(token); }
     });
 
@@ -30,8 +31,13 @@
     });
 
     // Connect to the player!
-    player.connect();
+   // player.connect()
   }
   </script>
+  <form id="playerName">
+    Player Name:<br>
+    <input type="text" name="playername"><br>
+    <input type="submit" onclick="player.connect()" value="Submit">
+  </form>
 </body>
 </html>
